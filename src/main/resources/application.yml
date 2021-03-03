@@ -1,0 +1,14 @@
+spring:
+  profiles:
+    active: dev
+    
+server:
+  port: 8080
+  servlet:
+    contextPath: /coding
+    
+    
+app:
+  datasources[0]: https://opentdb.com/api.php?amount=5&category=11
+  #datasources[1]: https://opentdb.com/api.php?amount=5&category=12
+  
