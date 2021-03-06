@@ -28,6 +28,12 @@ dependencies {
 	
 	testCompile("junit:junit")
 	testCompile("org.springframework.boot:spring-boot-starter-test")
+	
+	compileOnly 'org.projectlombok:lombok'
+  	annotationProcessor 'org.projectlombok:lombok'
+  	
+  	compile("org.aspectj:aspectjrt:1.7.3")
+  	compile("org.aspectj:aspectjweaver:1.6.10")
 }
 
 dependencyManagement {

@@ -15,14 +15,29 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties("app")
 public class ApplicationProperties {
 
-	List<String> datasources;
-
-	public List<String> getDatasources() {
+	private AppDataSources datasources;
+	
+	
+	public AppDataSources getDatasources() {
 		return datasources;
 	}
 
-	public void setDatasources(List<String> datasources) {
+
+	public void setDatasources(AppDataSources datasources) {
 		this.datasources = datasources;
+	}
+
+
+	public static class AppDataSources {
+		List<String> restDatasources;
+
+		public List<String> getRestDatasources() {
+			return restDatasources;
+		}
+
+		public void setRestDatasources(List<String> restDatasources) {
+			this.restDatasources = restDatasources;
+		}
 	}
 	
 	

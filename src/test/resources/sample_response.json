@@ -1,0 +1,69 @@
+{
+    "quiz": [
+        {
+            "category": "Entertainment: Film",
+            "results": [
+                {
+                    "type": "multiple",
+                    "difficulty": "medium",
+                    "question": "Which one of these films are shot entirely in one-take?",
+                    "all_answers": [
+                        "Russian Ark",
+                        "Birdman",
+                        "Schindler&#039;s List",
+                        "Good Will Hunting"
+                    ],
+                    "correct_answer": "Russian Ark"
+                },
+                {
+                    "type": "multiple",
+                    "difficulty": "hard",
+                    "question": "In the movie &quot;Scream&quot; who is Ghost Face?",
+                    "all_answers": [
+                        "Billy Loomis and Stu Macher",
+                        "Archie Prescott and Philip Marv",
+                        "Sidney Prescott",
+                        "Dewey Riley"
+                    ],
+                    "correct_answer": "Billy Loomis and Stu Macher"
+                },
+                {
+                    "type": "multiple",
+                    "difficulty": "easy",
+                    "question": "Which actor plays Obi-Wan Kenobi in Star Wars Episodes I-lll?",
+                    "all_answers": [
+                        "Ewan McGregor",
+                        "Liam Neeson",
+                        "Hayden Christensen",
+                        "Alec Guinness"
+                    ],
+                    "correct_answer": "Ewan McGregor"
+                },
+                {
+                    "type": "multiple",
+                    "difficulty": "medium",
+                    "question": "What is the correct spelling of the protagonist of the book in The NeverEnding Story (1984)?",
+                    "all_answers": [
+                        "Atraeyu",
+                        "Atrayu",
+                        "Atreyu",
+                        "Atraiyu"
+                    ],
+                    "correct_answer": "Atreyu"
+                },
+                {
+                    "type": "multiple",
+                    "difficulty": "medium",
+                    "question": "In the film &quot;Requiem for a Dream&quot;, what drug does Jared Leto&#039;s character get addicted to?",
+                    "all_answers": [
+                        "Heroin",
+                        "Marijuana",
+                        "Oxycodone",
+                        "Cocaine"
+                    ],
+                    "correct_answer": "Heroin"
+                }
+            ]
+        }
+    ]
+}

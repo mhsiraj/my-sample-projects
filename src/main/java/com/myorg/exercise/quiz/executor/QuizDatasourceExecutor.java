@@ -6,13 +6,18 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.client.RestTemplate;
 
+import com.myorg.exercise.quiz.config.ApplicationProperties;
 import com.myorg.exercise.quiz.ds.vo.QuizDatasourceVO;
 import com.myorg.exercise.quiz.ds.vo.Result;
 import com.myorg.exercise.quiz.response.vo.Quiz;
 import com.myorg.exercise.quiz.response.vo.QuizData;
+
+import lombok.extern.slf4j.Slf4j;
 
 
 /**
@@ -23,8 +28,15 @@ import com.myorg.exercise.quiz.response.vo.QuizData;
  * @author mhsiraj
  *
  */
+@Component
+@Slf4j
 public class QuizDatasourceExecutor {
 	
+	@Autowired
+	private ApplicationProperties app;
+	
+	@Autowired
+	private RestTemplate restTemplate;
 	
 	/**
 	 * Method to execute the data-sources in parallel threads
@@ -35,18 +47,19 @@ public class QuizDatasourceExecutor {
 	 * @param restTemplate - to hit the external service end-points
 	 * @return List<Quiz> - collection of quiz data
 	 */
-	public List<Quiz> getQuizData(List<String> datasources, RestTemplate restTemplate) {
+	public List<Quiz> getQuizData() {
 		
 		/* *******************************************************************************************************************
 		 * Execute the data-sources asynchronously in parallel threads.
-		 * configure all data-sources in application.yml file as app.datasources[0], app.datasources[1], etc.
-		 * This block will dynamically and concurrently execute all the configured data-sources
+		 * configure all data-sources in application.yml or on the corresponding profile.
+		 * This block will dynamically and concurrently executes all the configured data-sources
 		 * *******************************************************************************************************************/
-		List<CompletableFuture<Quiz>> dsFutures = datasources.stream().map(ds -> (CompletableFuture.supplyAsync(() -> {
+		log.info("Executing rest datasources concurrently...");
+		List<CompletableFuture<Quiz>> dsFutures = app.getDatasources().getRestDatasources().stream().map(ds -> (CompletableFuture.supplyAsync(() -> {
 			
 			// Get the data from data-source
 			QuizDatasourceVO datasourceVO = null;
-			datasourceVO = restTemplate.getForEntity(ds, QuizDatasourceVO.class).getBody();
+			datasourceVO = invokeRestService(ds);
 					
 			Quiz quiz = null;
 			if(datasourceVO != null) {
@@ -65,7 +78,24 @@ public class QuizDatasourceExecutor {
 				.map(CompletableFuture::join)
 				.filter(qz -> qz != null)
 				.collect(Collectors.toList());
+		log.info("Collected the execution output...");
 		return allQuizData;
+	}
+
+
+
+	/**
+	 * Method to execute one specific rest end-point
+	 * 
+	 * @param ds - the url to invoke
+	 * @return datasourceVO - the response QuizDatasourceVO
+	 */
+	public QuizDatasourceVO invokeRestService(String ds) {
+		QuizDatasourceVO datasourceVO;
+		datasourceVO = restTemplate.getForEntity(ds, QuizDatasourceVO.class).getBody();
+		log.info("Invoked rest service for the url:- {} ",ds);
+		
+		return datasourceVO;
 	}
 
 	
@@ -99,7 +129,7 @@ public class QuizDatasourceExecutor {
 	 * @param datasourceVO
 	 * @return quiz - the transformed quiz
 	 */
-	private Quiz getQuiz(QuizDatasourceVO datasourceVO) {
+	public Quiz getQuiz(QuizDatasourceVO datasourceVO) {
 		Quiz quiz = new Quiz();
 		quiz.setResults(datasourceVO.getResults().stream()
 				.map(mapQuizData)

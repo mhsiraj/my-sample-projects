@@ -1,0 +1,65 @@
+{
+  "response_code": 0,
+  "results": [
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "hard",
+      "question": "What was the last Aphex Twin album released before his decade-long hiatus?",
+      "correct_answer": "Drukqs",
+      "incorrect_answers": [
+        "Windowlicker",
+        "Syro",
+        "Collected Ambient Works 85-92"
+      ]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "The &quot;K&quot; in &quot;K-Pop&quot; stands for which word?",
+      "correct_answer": "Korean",
+      "incorrect_answers": [
+        "Kenyan",
+        "Kazakhstan",
+        "Kuwaiti"
+      ]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "What is the name of French electronic music producer Madeon&#039;s 2015 debut studio album?",
+      "correct_answer": "Adventure",
+      "incorrect_answers": [
+        "The City",
+        "Icarus",
+        "Pop Culture"
+      ]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "Who is the lead singer of The Lumineers?",
+      "correct_answer": "Wesley Schultz",
+      "incorrect_answers": [
+        "Jeremiah Fraites",
+        "Jay Van Dyke",
+        "Neyla Pekarek"
+      ]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "hard",
+      "question": "Who wrote the song &quot;You Know You Like It&quot;?",
+      "correct_answer": "AlunaGeorge",
+      "incorrect_answers": [
+        "DJ Snake",
+        "Steve Aoki",
+        "Major Lazer"
+      ]
+    }
+  ]
+}
